@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 import qrcode  # Make sure to install the qrcode library
+import requests  # Import the requests library
 
 app = Flask(__name__)
 
@@ -20,9 +21,17 @@ def generate_qr():
         qr_code_url = url_for('static', filename='qr_code.png')  # Get the URL for the QR code image
     return render_template('generate_qr.html', url=url, qr_code_url=qr_code_url)  # Render the form with QR code URL if available
 
-@app.route('/show_qr')  # Route to display the generated QR code
-def show_qr():
-    return render_template('show_qr.html')  # Render the template to show the QR code
+@app.route('/dictionary', methods=['GET', 'POST'])  # Route for the dictionary tool
+def dictionary_tool():
+    definition = None  # Initialize variable to hold the definition
+    word = None  # Initialize variable to hold the word
+    if request.method == 'POST':  # Check if the request method is POST
+        word = request.form['word']  # Get the word from the form input
+        response = requests.get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}')  # Use requests.get instead of request.get
+        if response.status_code == 200:
+            definition = response.json()[0]['meanings'][0]['definitions'][0]['definition']  # Extract the definition
+    return render_template('dictionary.html', definition=definition, word=word)  # Render the dictionary template with the definition if available
+
 
 if __name__ == '__main__':
     app.run(debug=True)  # Run the Flask application in debug mode

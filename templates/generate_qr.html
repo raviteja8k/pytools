@@ -5,94 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;  /* Set a maximum width for the form */
-            margin: auto;      /* Center the form horizontally */
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #5cb85c;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .breadcrumb {
-            margin-bottom: 20px;  /* Space below the breadcrumb */
-            font-size: 14px;  /* Font size for the breadcrumb */
-        }
-        .breadcrumb a {
-            text-decoration: none;  /* Remove underline from links */
-            color: #007bff;  /* Link color */
-        }
-        .breadcrumb a:hover {
-            text-decoration: underline;  /* Underline on hover */
-        }
-        .qr-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;  /* Center items horizontally */
-            justify-content: center;  /* Center items vertically */
-            margin-top: 20px;  /* Add some space above the container */
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your CSS file -->
 </head>
 <body>
     <div class="breadcrumb">
         <a href="/">Home</a> &gt; QR Code Generator
     </div>
 
-    <h1>Generate QR Code</h1>
-    <form method="POST">    
-        <input type="text" name="url" placeholder="Enter URL" required>
-        <button type="submit">Generate QR Code</button>
-    </form>
+    <div class="main">
+        <div class="form-section">
+        <h1>Generate QR Code</h1>
+        <p>Generate QR code for any URL instantly</p>
+            <form method="POST" class="generateqr_form">    
+                
+                <div class="input-group">
+                    <input type="text" class="form-input" placeholder="Enter URL" required="" name="url">
+                    <button type="submit" class="get-definition-btn">Generate</button>
+                </div>
 
-    <div class="qr-container">
+            </form>
+        </div>
+
+    <div class="definition-card">
         {% if qr_code_url %}
             <h3>Your QR Code for {{ url }}:</h3>
             <img src="{{ qr_code_url }}" alt="QR Code">
+        {% else %}
+        <p>Your QR code will be generated here</p>
         {% endif %}
     </div>
 
-    <a href="/">Back to Home</a>  <!-- Link to go back to the home page -->
+    
 </body>
 </html>

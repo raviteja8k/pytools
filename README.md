@@ -16,11 +16,21 @@ This tool allows users to generate QR codes from user-provided URLs. Users can e
 - Display of generated QR codes
 - Additional tools to be added in the future
 
+## Tool 2: Dictionary Tool
+
+This tool allows users to search for definitions, synonyms, and antonyms of words. Users can enter a word in the search form, and the application will display the relevant information.
+
+- Word definitions, synonyms, and antonyms lookup
+- User-friendly interface for searching words
+- Future enhancements to include pronunciation and examples
+
 ## Requirements
 
 - Python 3.x
 - Flask
 - qrcode library
+- nltk
+- requests
 
 ## Installation
 1. Clone the repository:
@@ -31,7 +41,12 @@ This tool allows users to generate QR codes from user-provided URLs. Users can e
 
 2. Install the required packages:
    ```bash
-   pip install Flask qrcode[pil]
+   pip install Flask qrcode[pil] nltk requests
+   ```
+
+3. Download the NLTK data:
+   ```bash
+   nltk.download('wordnet')
    ```
 
 ## Usage
@@ -45,6 +60,8 @@ This tool allows users to generate QR codes from user-provided URLs. Users can e
 
 3. Navigate to the QR code generator tool, enter a URL in the form, and submit to generate the QR code.
 
+4. Navigate to the Dictionary Tool, enter a word in the search form, and submit to view the definitions, synonyms, and antonyms.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -53,3 +70,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Flask](https://flask.palletsprojects.com/) - The web framework used.
 - [qrcode](https://pypi.org/project/qrcode/) - The library used for generating QR codes.
+- [NLTK](https://www.nltk.org/) - Natural Language Toolkit for text processing.
+- [Requests](https://docs.python-requests.org/en/master/) - HTTP library for making requests.

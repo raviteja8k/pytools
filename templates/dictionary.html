@@ -1,0 +1,38 @@
+<!-- templates/dictionary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> &gt; Dictionary
+    </div>
+    <div class="main">
+        <div class="form-section">
+        <h1>Dictionary</h1>
+        <p>Find the meaning of any word instantly</p>
+            <form method="POST" action="{{ url_for('dictionary_tool') }}" class="dictionary-form">    
+                
+                <div class="input-group">
+                    <input type="text" id="word" class="form-input" placeholder="Enter a word" required="" name="word">
+                    <button type="submit" class="get-definition-btn">Get Definition</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="definition-card">
+            {% if definition %}
+                <h2>Definition of {{ word }}:</h2> <!-- Updated to include the word -->
+                <p>{{ definition }}</p>
+            {% else %}
+                <p>Please enter a word to see its definition.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
