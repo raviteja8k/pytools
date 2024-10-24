@@ -1,6 +1,6 @@
 # Flask Web Applications Suite
 
-A collection of web applications built with Python and Flask. This project includes various tools, with the QR code generator being Tool 1.
+A collection of web applications built with Python and Flask. This project includes various tools.
 
 
 ## Features
@@ -23,6 +23,15 @@ This tool allows users to search for definitions, synonyms, and antonyms of word
 - Word definitions, synonyms, and antonyms lookup
 - User-friendly interface for searching words
 - Future enhancements to include pronunciation and examples
+
+## Tool 3: Watermark Adder
+
+This tool allows users to add watermarks to images. Users can upload an image and specify the watermark text, position, and style. The application will then add the watermark to the image and provide the option to download the watermarked image.
+
+- Image upload for adding watermarks
+- Customizable watermark text, position, and style
+- Download option for the watermarked image
+- Future enhancements to include batch processing and image editing features
 
 ## Requirements
 

@@ -1,0 +1,42 @@
+<!-- templates/Watermark.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> &gt; Watermark
+    </div>
+    <div class="main">
+        <div class="form-section">
+        <h1>Add Image Watermark</h1>
+        <p>Add watermark to your image</p>
+            <form method="POST" enctype="multipart/form-data">    
+                <div class="input-group">
+                    <input type="file" name="image" accept="image/*" required><br><br>
+                    <input type="text" name="watermark_text" placeholder="Enter watermark text" required><br><br>
+                    <button type="submit" class="get-definition-btn">Add Watermark</button>
+                </div>
+             <!--  <div class="input-group">
+                    <input type="text" id="word" class="form-input" placeholder="Enter a word" required="" name="word">
+                    <button type="submit" class="get-definition-btn">Get Definition</button>
+                </div>--> 
+
+            </form>
+        </div>
+
+        <div class="definition-card">
+            {% if watermarked_image_url %}
+            <img src="{{ watermarked_image_url }}" alt="Watermarked Image" style="max-width: 100%; height: auto;">
+
+            {% endif %}
+        </div>
+
+       
+    </div>
+</body>
+</html>
